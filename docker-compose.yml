@@ -10,7 +10,7 @@ services:
     ports:
       - 80:80
 
-  Restful:
+  restful:
     image: restful
     container_name: restful
     build: ./Restful
