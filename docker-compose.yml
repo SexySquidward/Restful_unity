@@ -11,8 +11,8 @@ services:
       - 80:80
 
   Restful:
-    image: Restful
-    container_name: Restful
+    image: restful
+    container_name: restful
     build: ./Restful
     restart: always
     environment:
