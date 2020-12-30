@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+
+  proxy:
+    build: ./Proxy
+    container_name: nginx
+    depends_on:
+      - Restful
+    ports:
+      - 80:80
+
+  Restful:
+    image: Restful
+    container_name: Restful
+    build: ./Restful
+    restart: always
+    environment:
+      - APP_NAME=MyFlaskApp
+    ports:
+      - 8080:80
