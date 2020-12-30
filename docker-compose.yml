@@ -6,7 +6,7 @@ services:
     build: ./Proxy
     container_name: nginx
     depends_on:
-      - Restful
+      - restful
     ports:
       - 80:80
 
