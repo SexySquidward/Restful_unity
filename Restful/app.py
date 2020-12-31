@@ -23,7 +23,7 @@ class Users(db.Model):
         return check_password_hash(self.passcode,password)
 
     def json(self):
-        return {'Username': self.Username,'Passcode':self.passcode}
+        return {'Username': self.Username,'Passcode':self.passcode, 'ID':self.id}
 
 class add_User(Resource):
     def post(self,Email,Username,Passcode):
