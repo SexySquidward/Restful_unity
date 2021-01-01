@@ -7,6 +7,7 @@ services:
     container_name: nginx
     depends_on:
       - restful
+      - restful_game
     ports:
       - 80:80
       - 8001:8001
@@ -20,7 +21,7 @@ services:
       - APP_NAME=MyFlaskApp
     ports:
       - 8080:80
-  restful:
+  restful_game:
     image: restful_game
     container_name: restful_game
     build: ./Test_game_Restful
