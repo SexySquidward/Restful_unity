@@ -18,7 +18,7 @@ class Test_game(db.Model):
     game_code = db.Column(db.String(10), index=True,nullable=False)
     def __init__(self, createdID):
         self.Created_by = createdID
-        self.ip_address = request.remote_addr
+        self.ip_address = Get_ip()
         self.game_code = Generate_code()
     def json(self):
         return {'GameCode':self.game_code}
@@ -44,8 +44,12 @@ class CreateGame(Resource):
 def Generate_code():
     value = randint(10000,90000)
     return value
-
-api.add_resource(FindGame,'/User/FindGame/<string:GameCode>')
+def Get_ip():
+    if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        return request.environ['REMOTE_ADDR']
+    else:
+        return request.environ['HTTP_X_FORWARDED_FOR']
+api.add_resource(FindGame,'/User/FindGame/<string:GameCode>', methods=['GET'])
 api.add_resource(CreateGame,'/User/AddGame/<string:id>')
 if __name__ == "__main__":
     app.run('0.0.0.0', port=80)
