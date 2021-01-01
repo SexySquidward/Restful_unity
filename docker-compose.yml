@@ -9,6 +9,7 @@ services:
       - restful
     ports:
       - 80:80
+      - 8001:8001
 
   restful:
     image: restful
@@ -19,3 +20,13 @@ services:
       - APP_NAME=MyFlaskApp
     ports:
       - 8080:80
+  restful:
+    image: restful_game
+    container_name: restful_game
+    build: ./Test_game_Restful
+    restart: always
+    environment:
+      - APP_NAME=MyFlaskApp
+    ports:
+      - 8070:80
+  
