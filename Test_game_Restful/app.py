@@ -3,7 +3,6 @@ from flask_restful import Resource,Api
 from flask_sqlalchemy import SQLAlchemy
 from  random import randint
 
-from werkzeug.security import generate_password_hash,check_password_hash
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "30/08/2002"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://Unity:6R872AlLdlMFQp0b@192.168.1.8:3308/Surprise_mechanics'
@@ -49,4 +48,4 @@ def Generate_code():
 api.add_resource(FindGame,'/User/FindGame/<string:GameCode>')
 api.add_resource(CreateGame,'/User/AddGame/<string:id>')
 if __name__ == "__main__":
-    app.run()
+    app.run('0.0.0.0', port=80)
