@@ -54,12 +54,19 @@ class CreateGame(Resource):
                 return {'405':'no servers available'}
         else:
             return {'404':'Couldnt get id'}
-
+class ServerCode(Resource):
+    def get(self, Server_ID):
+        server = Test_game.query.filter_by(Server_id=Server_ID).first()
+        if server is not None:
+            return server.json()
+        else:
+            return {'404':'Couldnt get id'}
 def Generate_code():
     value = random.randint(10000,90000)
     return value
 
 api.add_resource(FindGame,'/User/FindGame/<string:GameCode>', methods=['GET'])
 api.add_resource(CreateGame,'/User/AddGame/<string:id>')
+api.add_resource(ServerCode, '/Server/FindGame/<string:Server_ID>')
 if __name__ == "__main__":
     app.run('0.0.0.0', port=80)
