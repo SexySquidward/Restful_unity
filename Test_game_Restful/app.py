@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource,Api
 from flask_sqlalchemy import SQLAlchemy
-from  random import randint
+import random 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "30/08/2002"
