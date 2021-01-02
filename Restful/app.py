@@ -34,7 +34,7 @@ class Server_table(db.Model):
         self.Server_name = Server_name
         self.Port = Port
     def json(self):
-        return {'Server':self.Server_name,'Port':self.Port}
+        return {'Server':self.Server_name,'Port':self.Port,'ID':self.id}
 
 class add_User(Resource):
     def post(self,Email,Username,Passcode):
